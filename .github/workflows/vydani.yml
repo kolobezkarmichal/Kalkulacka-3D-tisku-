@@ -1,0 +1,34 @@
+name: Vydat historické verze
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/vydani.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  releases:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Stáhnout repozitář
+        uses: actions/checkout@v4
+      - name: Zveřejnit archivy v0.1 až v0.8
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          for i in 1 2 3 4 5 6 7 8; do
+            VERSION="v0.$i"
+            FILE="historie/3D_kalkulacka_P2S_${VERSION}.zip"
+            NOTES="docs/releases/${VERSION}.md"
+            if gh release view "$VERSION" >/dev/null 2>&1; then
+              echo "Vydání $VERSION už existuje, nepřepisuji ho."
+            elif [ "$i" -eq 8 ]; then
+              gh release create "$VERSION" "$FILE" --title "Kalkulačka 3D tisku $VERSION" --notes-file "$NOTES" --target "$GITHUB_SHA" --latest
+            else
+              gh release create "$VERSION" "$FILE" --title "Kalkulačka 3D tisku $VERSION" --notes-file "$NOTES" --target "$GITHUB_SHA" --latest=false
+            fi
+          done

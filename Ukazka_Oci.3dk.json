@@ -1,0 +1,73 @@
+{
+  "format": "3dk-p2s",
+  "version": 1,
+  "saved_at": "2026-11-20T22:20:54",
+  "title": "Ukázková zakázka – Oči",
+  "rates": {
+    "printer_name": "Bambu Lab P2S",
+    "amortization_per_hour": 10.0,
+    "energy_mode": "hourly",
+    "energy_per_hour": 2.0,
+    "power_watt": 100.0,
+    "price_kwh": 6.0,
+    "default_price_kg": 200.0,
+    "default_coefficient": 1.5,
+    "manual_hour_rate": 0.0,
+    "catalog": [],
+    "dark_mode": true
+  },
+  "jobs": [
+    {
+      "id": "b05f0c16b3ad4633a72f9cb6e4f0bf63",
+      "name": "Oci",
+      "path": "/mnt/data/Oci.gcode.3mf",
+      "plate": 1,
+      "objects": [
+        "Oko 1",
+        "Oko 2"
+      ],
+      "time_seconds": 3899.0,
+      "filaments": [
+        {
+          "slot": 1,
+          "material": "PLA",
+          "color": "#161616",
+          "grams": 4.87,
+          "meters": 1.61,
+          "price_kg": 200.0,
+          "profile": "3D FOX PLA P2S 230"
+        },
+        {
+          "slot": 2,
+          "material": "PLA",
+          "color": "#FFF144",
+          "grams": 8.95,
+          "meters": 2.95,
+          "price_kg": 200.0,
+          "profile": "3D FOX PLA P2S 230"
+        },
+        {
+          "slot": 3,
+          "material": "PLA",
+          "color": "#FFFFFF",
+          "grams": 5.44,
+          "meters": 1.8,
+          "price_kg": 200.0,
+          "profile": "3D FOX PLA P2S 230"
+        }
+      ],
+      "printer": "Bambu Lab P2S",
+      "nozzle": "0.4",
+      "layer_height": "0.2",
+      "layers": 44,
+      "switches": 31,
+      "thumbnail_b64": "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",
+      "warnings": [],
+      "quantity": 1,
+      "coefficient": 1.5,
+      "extra_cost": 0.0,
+      "labor_minutes": 0.0,
+      "model_time_seconds": 3477.0
+    }
+  ]
+}

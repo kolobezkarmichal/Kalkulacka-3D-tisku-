@@ -1,0 +1,7 @@
+.venv/
+__pycache__/
+*.pyc
+*.3dk.json
+*.gcode
+*.gcode.3mf
+settings.json
