@@ -1,0 +1,68 @@
+name: Windows instalátor 3D kalkulačky
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'windows/**'
+      - '.github/workflows/windows-installer.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows-setup:
+    name: Sestavit a otestovat instalační EXE
+    runs-on: windows-2025
+    steps:
+      - name: Stáhnout zdroje
+        uses: actions/checkout@v4
+
+      - name: Python 3.12 x64
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          architecture: 'x64'
+
+      - name: Sestavení aplikace a instalátoru
+        shell: pwsh
+        run: ./windows/SESTAVIT_WINDOWS.ps1
+
+      - name: Spouštěcí kontrola EXE (bez instalace)
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $exe = Join-Path $env:GITHUB_WORKSPACE 'dist\Kalkulacka3DTisku\Kalkulacka3DTisku.exe'
+          $process = Start-Process -FilePath $exe -PassThru
+          try {
+            Start-Sleep -Seconds 8
+            $process.Refresh()
+            if ($process.HasExited) { throw "Program skončil předčasně s kódem $($process.ExitCode)." }
+            Write-Host 'EXE se spustilo a běží.'
+          } finally {
+            if (-not $process.HasExited) { Stop-Process -Id $process.Id -Force }
+          }
+
+      - name: Publikovat instalátor jako artefakt
+        uses: actions/upload-artifact@v4
+        with:
+          name: Kalkulacka-3D-tisku-v0.8.1-Windows-Setup
+          path: output/Kalkulacka-3D-tisku-v0.8.1-Windows-Setup.exe
+          if-no-files-found: error
+
+      - name: Vydat instalátor pro stažení
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          $ErrorActionPreference = 'Stop'
+          $tag = 'v0.8.1-windows'
+          $file = 'output/Kalkulacka-3D-tisku-v0.8.1-Windows-Setup.exe'
+          gh release view $tag *> $null
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host "Vydání $tag už existuje, nepřepisuji ho."
+          } else {
+            gh release create $tag $file --title 'Kalkulačka 3D tisku v0.8.1 – instalátor pro Windows' --notes-file windows/README_INSTALATOR.md --target $env:GITHUB_SHA --latest
+            if ($LASTEXITCODE -ne 0) { throw 'Vytvoření GitHub vydání selhalo.' }
+          }
