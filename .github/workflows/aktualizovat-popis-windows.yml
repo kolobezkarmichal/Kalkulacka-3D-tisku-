@@ -1,0 +1,26 @@
+name: Aktualizovat popis vydání pro Windows
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'windows/README_INSTALATOR.md'
+      - '.github/workflows/aktualizovat-popis-windows.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-release-notes:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upravit poznámky existujícího vydání
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release view v0.8.1-windows >/dev/null
+          gh release edit v0.8.1-windows --notes-file windows/README_INSTALATOR.md

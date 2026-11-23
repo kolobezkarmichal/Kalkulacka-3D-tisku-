@@ -4,7 +4,11 @@ on:
   push:
     branches: [main]
     paths:
-      - 'windows/**'
+      - 'windows/*.py'
+      - 'windows/assets/**'
+      - 'windows/instalator.iss'
+      - 'windows/SESTAVIT_WINDOWS.ps1'
+      - 'windows/requirements-build.txt'
       - '.github/workflows/windows-installer.yml'
   workflow_dispatch:
 

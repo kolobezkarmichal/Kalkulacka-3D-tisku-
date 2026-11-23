@@ -9,7 +9,7 @@
 3. Program se nainstaluje do uživatelské složky, vytvoří zástupce v nabídce Start a volitelně na ploše.
 4. Spusť **3D Kalkulačka P2S**. Pro běžnou práci není nutné připojení k internetu.
 
-Instalace probíhá pro aktuálního uživatele a běžně nevyžaduje oprávnění správce. Na firemním notebooku může instalaci omezovat firemní bezpečnostní politika. Instalátor **není digitálně podepsaný** a Windows SmartScreen proto může zobrazit upozornění; pokud to firemní pravidla nedovolují, kontaktuj správce IT.
+Instalace probíhá pro aktuálního uživatele a běžně nevyžaduje oprávnění správce. Instalátor **není digitálně podepsaný**, proto může Windows SmartScreen zobrazit bezpečnostní upozornění. Na počítačích s omezenými oprávněními může být instalace zablokována.
 
 ## Používání
 
@@ -33,4 +33,4 @@ Výsledný instalátor najdeš ve složce `output/`. Sestavování na GitHub Act
 
 ## Upozornění
 
-Kalkulace vycházejí z odhadů Bambu Studia. Instalátor byl automaticky sestaven na Windows runneru GitHub Actions; první skutečnou instalaci a ovládání na uživatelském notebooku je nutné vyzkoušet. Aplikace je český komunitní projekt vznikající s pomocí umělé inteligence.
+Kalkulace vycházejí z odhadů Bambu Studia. Instalátor byl automaticky sestaven a základní spuštění programu ověřeno v GitHub Actions na Windows. Instalaci a ovládání na dalších konfiguracích systému Windows zatím není možné zaručit. Aplikace je český komunitní projekt vznikající s pomocí umělé inteligence.
