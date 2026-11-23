@@ -2,7 +2,7 @@
 
 Česká desktopová aplikace napsaná v **Pythonu a PySide6**, určená pro výpočet nákladů a prodejních cen 3D tisku. Pracuje zejména se soubory **`.gcode.3mf` exportovanými z Bambu Studia**; podporuje také běžný G-code, pokud obsahuje potřebná data.
 
-Nejnovější dostupný zdrojový kód pro Linux v tomto repozitáři: **v0.8.1**. Pro Windows je k dispozici samostatný instalátor v0.8.1.
+Nejnovější verze klasické Python aplikace v tomto repozitáři: **v0.8.1**. Pro Windows je navíc k dispozici samostatný instalátor, který nevyžaduje ruční instalaci Pythonu.
 
 ## Co aplikace umí
 
@@ -51,7 +51,7 @@ Příkaz `kdialog` není povinný, ale na KDE se doporučuje kvůli výběru sou
 | v0.6 | HEX barvy z CSV | [ZIP](historie/3D_kalkulacka_P2S_v0.6.zip) |
 | v0.7 | Oprava kolečka myši | [ZIP](historie/3D_kalkulacka_P2S_v0.7.zip) |
 | v0.8 | Náklady u jednotlivých položek | [ZIP](historie/3D_kalkulacka_P2S_v0.8.zip) |
-| **v0.8.1 (Linux)** | Oprava českých názvů ukládaných zakázek | [ZIP](historie/3D_kalkulacka_P2S_v0.8.1.zip) |
+| **v0.8.1** | Oprava českých názvů ukládaných zakázek | [ZIP](historie/3D_kalkulacka_P2S_v0.8.1.zip) |
 
 Viz také [úplná historie změn](CHANGELOG.md) a [poznámky k jednotlivým vydáním](docs/releases/).
 
@@ -62,7 +62,7 @@ Viz také [úplná historie změn](CHANGELOG.md) a [poznámky k jednotlivým vyd
 - `requirements.txt` – závislost PySide6.
 - `spustit.sh` – spuštění v Linuxu.
 - `test_*.py` – automatické testy bez nutnosti spouštět grafiku.
-- `historie/` – **originální archivní ZIPy v0.1 až v0.8**.
+- `historie/` – **originální archivní ZIPy v0.1 až v0.8.1**.
 
 Testy lze spustit příkazem `python3 -m unittest discover -v`.
 

@@ -1,4 +1,4 @@
-name: Vydat opravu v0.8.1 pro Linux
+name: Vydat opravu v0.8.1 – Python
 on:
   push:
     branches: [main]
@@ -26,5 +26,5 @@ jobs:
           if gh release view "$VER" >/dev/null 2>&1; then
             echo "Vydání $VER již existuje; nepřepisuji."
           else
-            gh release create "$VER" "$FULL" "$PATCH" --title "Kalkulačka 3D tisku v0.8.1 – Linux" --notes-file "docs/releases/$VER.md" --target "$GITHUB_SHA" --latest=false
+            gh release create "$VER" "$FULL" "$PATCH" --title "Kalkulačka 3D tisku v0.8.1 – oprava názvů souborů" --notes-file "docs/releases/$VER.md" --target "$GITHUB_SHA" --latest=false
           fi

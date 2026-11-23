@@ -1,0 +1,23 @@
+name: Aktualizovat popis Python vydání v0.8.1
+on:
+  push:
+    branches: [main]
+    paths:
+      - "docs/releases/v0.8.1.md"
+      - ".github/workflows/aktualizovat-popis-python-081.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  upravit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Upravit existující vydání bez změny archivů
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          gh release view v0.8.1 >/dev/null
+          gh release edit v0.8.1 --title "Kalkulačka 3D tisku v0.8.1 – oprava názvů souborů" --notes-file docs/releases/v0.8.1.md

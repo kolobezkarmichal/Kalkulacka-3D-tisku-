@@ -74,11 +74,11 @@ Historie vychází ze zachovaných původních ZIP archivů v0.1 až v0.8. Každ
 
 [Archiv této verze](https://github.com/kolobezkarmichal/Kalkulacka-3D-tisku-/raw/main/historie/3D_kalkulacka_P2S_v0.8.zip)
 
-## v0.8.1 – Oprava českých názvů ukládaných zakázek (Linux)
+## v0.8.1 – Oprava českých názvů ukládaných zakázek
 
 - Při prvním uložení zakázky se v návrhu názvu souboru zachovává česká diakritika a mezery (například `Dárek Aleš.3dk.json`).
 - Neplatné znaky v názvech souborů jsou bezpečně nahrazeny. Starší zakázky se nemění a zůstávají otevřitelné.
 - Doplněny testy pro české názvy souborů. Výpočty a export PDF zůstávají beze změny.
-- Linuxový archiv obsahuje kompletní aplikaci a zdrojové soubory, k dispozici je i menší opravný balíček.
+- Kompletní archiv obsahuje Python aplikaci a její zdrojové soubory; k dispozici je i menší opravný balíček.
 
-[Kompletní Linux ZIP](historie/3D_kalkulacka_P2S_v0.8.1.zip) · [Jen opravné soubory](historie/3D_kalkulacka_P2S_v0.8.1_oprava_nazvu.zip)
+[Kompletní ZIP aplikace](historie/3D_kalkulacka_P2S_v0.8.1.zip) · [Jen opravné soubory](historie/3D_kalkulacka_P2S_v0.8.1_oprava_nazvu.zip)
