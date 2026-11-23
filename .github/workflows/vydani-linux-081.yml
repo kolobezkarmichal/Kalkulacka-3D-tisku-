@@ -1,0 +1,30 @@
+name: Vydat opravu v0.8.1 pro Linux
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/vydani-linux-081.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ověřit archivy a připravit GitHub Release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          VER="v0.8.1"
+          FULL="historie/3D_kalkulacka_P2S_v0.8.1.zip"
+          PATCH="historie/3D_kalkulacka_P2S_v0.8.1_oprava_nazvu.zip"
+          unzip -t "$FULL" >/dev/null
+          unzip -t "$PATCH" >/dev/null
+          if gh release view "$VER" >/dev/null 2>&1; then
+            echo "Vydání $VER již existuje; nepřepisuji."
+          else
+            gh release create "$VER" "$FULL" "$PATCH" --title "Kalkulačka 3D tisku v0.8.1 – Linux" --notes-file "docs/releases/$VER.md" --target "$GITHUB_SHA" --latest=false
+          fi

@@ -38,7 +38,7 @@ from engine import (
     APP_VERSION, PROJECT_EXT, Filament, PrintJob, Rates, color_name, default_config_path,
     human_duration, load_rates, money, open_project, parse_file, project_totals,
     safe_hex, save_project, save_rates, import_filament_csv, stock_balances, fox_overrun,
-    approximate_filament_color
+    approximate_filament_color, suggested_project_filename
 )
 
 
@@ -1523,9 +1523,9 @@ class MainWindow(QMainWindow):
     def _save(self) -> bool:
         path = self.project_path
         if path is None:
-            suggested = re.sub(r'[^A-Za-z0-9_\-]+', '_', self.project_title.text().strip()) or 'zakazka'
+            suggested = suggested_project_filename(self.project_title.text())
             paths = choose_dialog(self, 'Uložit zakázku', mode='save',
-                suggested=str(Path.home() / (suggested + PROJECT_EXT)),
+                suggested=str(Path.home() / suggested),
                 file_filter='Zakázka kalkulačky (*.3dk.json)')
             pathname = paths[0] if paths else '' 
             if not pathname: return False

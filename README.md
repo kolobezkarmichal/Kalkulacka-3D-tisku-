@@ -2,7 +2,7 @@
 
 Česká desktopová aplikace napsaná v **Pythonu a PySide6**, určená pro výpočet nákladů a prodejních cen 3D tisku. Pracuje zejména se soubory **`.gcode.3mf` exportovanými z Bambu Studia**; podporuje také běžný G-code, pokud obsahuje potřebná data.
 
-Nejnovější dostupný zdrojový kód v tomto repozitáři: **v0.8**.
+Nejnovější dostupný zdrojový kód pro Linux v tomto repozitáři: **v0.8.1**. Pro Windows je k dispozici samostatný instalátor v0.8.1.
 
 ## Co aplikace umí
 
@@ -18,7 +18,7 @@ Nejnovější dostupný zdrojový kód v tomto repozitáři: **v0.8**.
 
 ## Instalace na Linuxu (například MX Linux KDE)
 
-Stáhni [archiv v0.8](historie/3D_kalkulacka_P2S_v0.8.zip), rozbal jej a otevři terminál ve složce `3D_kalkulacka_P2S`:
+Stáhni [archiv v0.8.1](historie/3D_kalkulacka_P2S_v0.8.1.zip), rozbal jej a otevři terminál ve složce `3D_kalkulacka_P2S`:
 
 ```bash
 sudo apt install python3-venv kdialog
@@ -51,6 +51,7 @@ Příkaz `kdialog` není povinný, ale na KDE se doporučuje kvůli výběru sou
 | v0.6 | HEX barvy z CSV | [ZIP](historie/3D_kalkulacka_P2S_v0.6.zip) |
 | v0.7 | Oprava kolečka myši | [ZIP](historie/3D_kalkulacka_P2S_v0.7.zip) |
 | v0.8 | Náklady u jednotlivých položek | [ZIP](historie/3D_kalkulacka_P2S_v0.8.zip) |
+| **v0.8.1 (Linux)** | Oprava českých názvů ukládaných zakázek | [ZIP](historie/3D_kalkulacka_P2S_v0.8.1.zip) |
 
 Viz také [úplná historie změn](CHANGELOG.md) a [poznámky k jednotlivým vydáním](docs/releases/).
 

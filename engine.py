@@ -17,8 +17,29 @@ from pathlib import Path
 from typing import Any
 from xml.etree import ElementTree as ET
 
-APP_VERSION = '0.8.0'
+APP_VERSION = '0.8.1'
 PROJECT_EXT = '.3dk.json'
+
+
+def suggested_project_filename(title: str) -> str:
+    """Název souboru zakázky: ponechá českou diakritiku a mezery.
+
+    Odstraní pouze znaky nepovolené v názvech souborů napříč systémy.
+    Nemění název zakázky uvnitř JSON ani soubory již uložených zakázek.
+    """
+    title = unicodedata.normalize('NFC', str(title or ''))
+    # Řídicí znaky a oddělovače cest nesmějí tvořit název souboru.
+    title = re.sub(r'[\x00-\x1f\x7f<>:"/\\|?*]', '_', title)
+    title = re.sub(r'\s+', ' ', title).strip(' .')
+    # Ochrana před příliš dlouhými názvy.
+    title = title[:120].rstrip(' .') or 'zakázka'
+    if title.split('.')[0].casefold() in {
+        'con', 'prn', 'aux', 'nul',
+        *(f'com{i}' for i in range(1, 10)),
+        *(f'lpt{i}' for i in range(1, 10)),
+    }:
+        title = '_' + title
+    return title + PROJECT_EXT
 
 
 def float_or(value: Any, default: float = 0.0) -> float:
